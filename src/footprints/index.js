@@ -17,4 +17,5 @@ module.exports = {
     slider: require('./slider'),
     trrs: require('./trrs'),
     via: require('./via'),
+    xiao: require('./xiao')
 }
