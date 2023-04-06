@@ -1,0 +1,93 @@
+units:
+    # `U` is a predefined unit of measure that means 19.05mm, which is MX spacing
+    angle: -10
+  points:
+    zones:
+      matrix:
+        columns:
+          outer:
+            key:
+              column_net: P21
+          pinky:
+            key:
+              stagger: 0.05U
+              column_net: P20
+          ring:
+            key:
+              stagger: 0.3U
+              column_net: P19
+          middle:
+            key:
+              stagger: 0.15U
+              column_net: P18
+          index:
+            key:
+              stagger: -0.25U
+              column_net: P15
+          inner:
+            key:
+              stagger: -0.15U
+              column_net: P14
+        rows:
+          bottom:
+            padding: U
+            row_net: P4
+          home:
+            padding: U
+            row_net: P5
+          top:
+            padding: U
+            row_net: P6
+      thumb:
+        anchor:
+          shift: [5, -1.2U]
+          ref: matrix_index_bottom
+        columns:
+          left:
+            key:
+              column_net: P7
+          middle:
+            key:
+              splay: angle
+              origin: [-.6U, -.75U]
+              column_net: P7
+          right:
+            key:
+              splay: angle
+              origin: [-.6U, -.75U]
+              column_net: P8
+          thumb_top:
+            key:
+              splay: -angle
+              origin: [-7.U, -9.5U]
+              column_net: P9
+        rows:
+          only:
+            row_net: P7
+            padding: U
+  pcbs:
+    praline:
+      footprints:
+        keys:
+          what: mx
+          where: true
+          params:
+            from: "{{colrow}}"
+            to: "{{column_net}}"
+            keycaps: true
+        diodes:
+          what: diode
+          where: true
+          adjust:
+            shift: [0, -4.7]
+          params:
+            from: "{{colrow}}"
+            to: "{{row_net}}"
+        mcu:
+          what: promicro
+          where:
+            aggregate.parts:
+              - ref: matrix_inner_top
+            shift: [25, 0]
+            rotate: -90
+  
