@@ -1,0 +1,181 @@
+units:
+  # `U` is a predefined unit of measure that means 19.05mm, which is MX spacing
+  kx: U
+  ky: U
+  px: kx + 4
+  py: ky + 4
+points:
+  zones:
+    matrix:
+      anchor:
+        rotate: 5
+        shift: [100,-100]
+      columns:
+        pinky:
+          key.column_net: P16
+        ring:
+          key.origin: [-12, -19]
+          key.stagger: 12
+          key.column_net: P10
+          # rows.column_net: P16
+        middle:
+          key.stagger: 5
+          key.column_net: P7
+          # rows.bottom.column_net: P10
+        index:
+          key.stagger: -6
+          key.column_net: P8
+          # rows.bottom.column_net: P7
+        inner:
+          key.stagger: -2
+          key.column_net: P9
+      rows:
+        bottom:
+          row_net: P14
+          mirror.row_net: P6
+        home: 
+          row_net: P18
+          mirror.row_net: P5
+        top:
+          row_net: P19
+          mirror.row_net: P4
+    thumbfan:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [-11, -22]
+      columns:
+        near:
+          key.column_net: P7
+        home:
+          key.spread: 21.25
+          key.splay: -17
+          key.origin: [-11.75, -4]
+          key.column_net: P8
+        far:
+          key.spread: 21.25
+          key.splay: -14
+          key.origin: [-9.5, -4]
+          key.column_net: P9
+      rows:
+        thumb:
+          row_net: P15
+  rotate: -22
+  mirror:
+    ref: matrix_pinky_home
+    distance: 223.7529778
+outlines:
+  raw:
+  # Pure key outline.
+    - what: rectangle
+      where: true
+      size: [px, py]
+  keys:
+  # Key outlines with 0.5mm removed to show key overlaps.
+    - what: rectangle
+      where: true
+      size: [kx-0.5,ky-0.5]
+  board:
+  # PCB board outline.
+    - what: polygon
+      operation: stack
+      fillet: 2
+      points:
+        - ref: matrix_pinky_top
+          shift: [-0.5px,0.5py]
+        - ref: matrix_ring_top
+          shift: [-0.5px,0.5py]
+        - ref: matrix_middle_top
+          shift: [-0.5px,0.5py]
+        - ref: matrix_middle_top
+          shift: [0.5px,0.5py]
+        - ref: matrix_inner_top
+          shift: [0.5px,0.5py]
+        - ref: matrix_inner_top
+          shift: [0.75px,0.25py]
+        - ref: mirror_matrix_inner_top
+          shift: [0.75px,0.25py]
+        - ref: mirror_matrix_inner_top
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_middle_top
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_middle_top
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_ring_top
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_pinky_top
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [-0.5px,-0.5py]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [0.5px,-0.5py]
+        - ref: mirror_matrix_ring_bottom
+          shift: [0.75px,-1py]
+        - ref: mirror_thumbfan_near_thumb
+          shift: [-0.6px,-0.5py]
+        - ref: mirror_thumbfan_far_thumb
+          shift: [0.6px,-0.5py]
+        - ref: mirror_thumbfan_far_thumb
+          shift: [0.6px,0.5py]
+        - ref: thumbfan_far_thumb
+          shift: [0.6px,0.5py]
+        - ref: thumbfan_far_thumb
+          shift: [0.5px,-0.5py]
+        - ref: thumbfan_near_thumb
+          shift: [-0.5px,-0.5py]
+        - ref: matrix_ring_bottom
+          shift: [0.75px,-1py]
+        - ref: matrix_pinky_bottom
+          shift: [0.5px,-0.5py]
+        - ref: matrix_pinky_bottom
+          shift: [-0.5px,-0.5py]
+pcbs:
+  unibody:
+    outlines:
+      main:
+        outline: board
+    footprints:
+      mx_hotswap:
+        what: mx
+        where: true
+        params:
+          keycaps: true
+          reverse: false
+          hotswap: true
+          from: "{{colrow}}"
+          to: "{{column_net}}"
+      diode:
+        what: diode
+        where: true
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+          front: false
+        adjust:
+          shift: [0, -5]
+      mcu:
+        what: promicro
+        params:
+        where:
+          ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
+          shift: [0,-17]
+          rotate: -90
+      reset:
+        what: button
+        params:
+          from: GND
+          to: RST
+          side: 'F'
+        where:
+          ref.aggregate.parts: [matrix_inner_bottom, mirror_matrix_inner_bottom]
+          shift: [0, -35]
+          rotate: 0
+      power:
+        what: slider
+        params:
+          from: GND
+          to: RAW
+          side: 'F'
+        where:
+          ref.aggregate.parts: [matrix_inner_bottom, mirror_matrix_inner_bottom]
+          shift: [0, -42]
+          rotate: 180
