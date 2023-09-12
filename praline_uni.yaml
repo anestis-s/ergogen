@@ -78,56 +78,129 @@ outlines:
   # PCB board outline.
     - what: polygon
       operation: stack
-      fillet: 2
+      fillet: 1.0
       points:
         - ref: matrix_pinky_top
           shift: [-0.5px,0.5py]
+        - ref: matrix_pinky_top
+          shift: [0.39kx,0.5py]
+
         - ref: matrix_ring_top
           shift: [-0.5px,0.5py]
+        - ref: matrix_ring_top
+          shift: [0.39kx,0.5py]
+
         - ref: matrix_middle_top
           shift: [-0.5px,0.5py]
         - ref: matrix_middle_top
           shift: [0.5px,0.5py]
+
+        - ref: matrix_index_top
+          shift: [-0.39kx,0.5py]
+        - ref: matrix_index_top
+          shift: [0.5px,0.5py]
+
+        - ref: matrix_inner_top
+          shift: [-0.39kx,0.5py]
         - ref: matrix_inner_top
           shift: [0.5px,0.5py]
         - ref: matrix_inner_top
-          shift: [0.75px,0.25py]
+          shift: [0.7px,0.25py]
+
         - ref: mirror_matrix_inner_top
-          shift: [0.75px,0.25py]
+          shift: [0.7px,0.25py]
         - ref: mirror_matrix_inner_top
           shift: [0.5px,0.5py]
+        - ref: mirror_matrix_inner_top
+          shift: [-0.39kx,0.5py]
+
+        - ref: mirror_matrix_index_top
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_index_top
+          shift: [-0.39kx,0.5py]
+
         - ref: mirror_matrix_middle_top
           shift: [0.5px,0.5py]
         - ref: mirror_matrix_middle_top
           shift: [-0.5px,0.5py]
+
+        - ref: mirror_matrix_ring_top
+          shift: [0.39kx,0.5py]
         - ref: mirror_matrix_ring_top
           shift: [-0.5px,0.5py]
+
+        - ref: mirror_matrix_pinky_top
+          shift: [0.39kx,0.5py]
         - ref: mirror_matrix_pinky_top
           shift: [-0.5px,0.5py]
+          
         - ref: mirror_matrix_pinky_bottom
           shift: [-0.5px,-0.5py]
         - ref: mirror_matrix_pinky_bottom
           shift: [0.5px,-0.5py]
+
         - ref: mirror_matrix_ring_bottom
-          shift: [0.75px,-1py]
+          shift: [-0.39kx,-0.5py]
+        - ref: mirror_matrix_ring_bottom
+          shift: [0.5px,-0.5py]
+
+        - ref: mirror_matrix_middle_bottom
+          shift: [-0.39kx,-0.5py]
+        - ref: mirror_matrix_middle_bottom
+          shift: [0.39kx,-0.5py]
+
+        - ref: mirror_matrix_index_bottom
+          shift: [-0.5px,-0.5py]
+
         - ref: mirror_thumbfan_near_thumb
-          shift: [-0.6px,-0.5py]
+          shift: [-0.5px,0.54py]
+        - ref: mirror_thumbfan_near_thumb
+          shift: [-0.5px,-0.5py]
+        - ref: mirror_thumbfan_near_thumb
+          shift: [0.5kx,-0.5py]
+
+        - ref: mirror_thumbfan_home_thumb
+          shift: [0.5kx,-0.5py]
+
         - ref: mirror_thumbfan_far_thumb
-          shift: [0.6px,-0.5py]
+          shift: [0.5px,-0.5py]
         - ref: mirror_thumbfan_far_thumb
           shift: [0.6px,0.5py]
+
         - ref: thumbfan_far_thumb
           shift: [0.6px,0.5py]
         - ref: thumbfan_far_thumb
           shift: [0.5px,-0.5py]
+
+        - ref: thumbfan_home_thumb
+          shift: [0.5kx,-0.5py]
+
+
+        - ref: thumbfan_near_thumb
+          shift: [0.5kx,-0.5py]
         - ref: thumbfan_near_thumb
           shift: [-0.5px,-0.5py]
+        - ref: thumbfan_near_thumb
+          shift: [-0.5px,0.54py]
+
+        - ref: matrix_index_bottom
+          shift: [-0.5px,-0.5py]
+
+        - ref: matrix_middle_bottom
+          shift: [0.39kx,-0.5py]
+        - ref: matrix_middle_bottom
+          shift: [-0.39kx,-0.5py]
+
         - ref: matrix_ring_bottom
-          shift: [0.75px,-1py]
+          shift: [0.5px,-0.5py]
+        - ref: matrix_ring_bottom
+          shift: [-0.39kx,-0.5py]
+
         - ref: matrix_pinky_bottom
           shift: [0.5px,-0.5py]
         - ref: matrix_pinky_bottom
           shift: [-0.5px,-0.5py]
+
 pcbs:
   unibody:
     outlines:
@@ -141,8 +214,8 @@ pcbs:
           keycaps: true
           reverse: false
           hotswap: true
-          from: "{{colrow}}"
-          to: "{{column_net}}"
+          from: "{{column_net}}"
+          to: "{{colrow}}"
       diode:
         what: diode
         where: true
