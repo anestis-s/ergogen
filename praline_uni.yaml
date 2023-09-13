@@ -15,17 +15,14 @@ points:
           key.column_net: P16
         ring:
           key.origin: [-12, -19]
-          key.stagger: 12
+          key.stagger: 8
           key.column_net: P10
-          # rows.column_net: P16
         middle:
-          key.stagger: 5
+          key.stagger: 3
           key.column_net: P7
-          # rows.bottom.column_net: P10
         index:
-          key.stagger: -6
+          key.stagger: -4
           key.column_net: P8
-          # rows.bottom.column_net: P7
         inner:
           key.stagger: -2
           key.column_net: P9
@@ -42,7 +39,7 @@ points:
     thumbfan:
       anchor:
         ref: matrix_inner_bottom
-        shift: [-11, -22]
+        shift: [-8, -22]
       columns:
         near:
           key.column_net: P7
@@ -62,7 +59,7 @@ points:
   rotate: -22
   mirror:
     ref: matrix_pinky_home
-    distance: 223.7529778
+    distance: 230
 outlines:
   raw:
   # Pure key outline.
@@ -240,15 +237,24 @@ pcbs:
           side: 'F'
         where:
           ref.aggregate.parts: [matrix_inner_bottom, mirror_matrix_inner_bottom]
-          shift: [0, -35]
-          rotate: 0
+          shift: [-6, -32]
+          rotate: 90
       power:
         what: slider
         params:
-          from: GND
-          to: RAW
+          from: RAW
+          to: POS
           side: 'F'
         where:
           ref.aggregate.parts: [matrix_inner_bottom, mirror_matrix_inner_bottom]
           shift: [0, -42]
           rotate: 180
+      jst:
+        what: jstph
+        params:
+          pos: POS
+          neg: GND
+        where:
+          ref.aggregate.parts: [matrix_inner_bottom, mirror_matrix_inner_bottom]
+          shift: [4, -30]
+          rotate: 0
