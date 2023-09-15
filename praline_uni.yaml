@@ -12,29 +12,29 @@ points:
         shift: [100,-100]
       columns:
         pinky:
-          key.column_net: P16
+          key.column_net: P14
         ring:
           key.origin: [-12, -19]
           key.stagger: 8
-          key.column_net: P10
+          key.column_net: P15
         middle:
           key.stagger: 3
-          key.column_net: P7
+          key.column_net: P18
         index:
           key.stagger: -4
-          key.column_net: P8
+          key.column_net: P19
         inner:
           key.stagger: -2
           key.column_net: P9
       rows:
         bottom:
-          row_net: P14
+          row_net: P16
           mirror.row_net: P6
         home: 
-          row_net: P18
+          row_net: P20
           mirror.row_net: P5
         top:
-          row_net: P19
+          row_net: P21
           mirror.row_net: P4
     thumbfan:
       anchor:
@@ -42,12 +42,12 @@ points:
         shift: [-8, -22]
       columns:
         near:
-          key.column_net: P7
+          key.column_net: P18
         home:
           key.spread: 21.25
           key.splay: -17
           key.origin: [-11.75, -4]
-          key.column_net: P8
+          key.column_net: P19
         far:
           key.spread: 21.25
           key.splay: -14
@@ -55,8 +55,8 @@ points:
           key.column_net: P9
       rows:
         thumb:
-          row_net: P15
-          mirror.row_net: P03
+          row_net: P10
+          mirror.row_net: P2
   rotate: -22
   mirror:
     ref: matrix_pinky_home
@@ -239,7 +239,7 @@ pcbs:
         where:
           ref.aggregate.parts: [matrix_inner_bottom, mirror_matrix_inner_bottom]
           shift: [-6, -32]
-          rotate: 90
+          rotate: -90
       power:
         what: slider
         params:
