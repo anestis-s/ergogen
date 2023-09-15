@@ -56,6 +56,7 @@ points:
       rows:
         thumb:
           row_net: P15
+          mirror.row_net: P03
   rotate: -22
   mirror:
     ref: matrix_pinky_home
@@ -221,7 +222,7 @@ pcbs:
           to: "{{row_net}}"
           front: false
         adjust:
-          shift: [0, -5]
+          shift: [0, -4]
       mcu:
         what: promicro
         params:
