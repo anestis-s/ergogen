@@ -4,8 +4,8 @@ units:
   ky: U
   px: kx + 4
   py: ky + 4
-  key_hole_x: 14.1
-  key_hole_y: 14.1
+  key_hole_x: 13.9
+  key_hole_y: 13.9
 points:
   zones:
     matrix:
@@ -219,7 +219,7 @@ pcbs:
         outline: board
     footprints:
       mx_hotswap:
-        what: mx
+        what: choc
         where: true
         params:
           keycaps: true
